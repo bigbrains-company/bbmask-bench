@@ -1,0 +1,835 @@
+{
+  "meta": {
+    "bench_version": "0.1.0",
+    "sdk_version": "0.3.1",
+    "service": "https://app.bbmask.co",
+    "options": {
+      "placeholder_style": "angle",
+      "keep_legal_form": false,
+      "health_data": false,
+      "llm_review": false,
+      "persist": false
+    },
+    "concurrency": 1,
+    "seed": 42,
+    "max_bytes": 80000,
+    "started_at": "2026-11-26T11:23:36+00:00",
+    "finished_at": "2026-11-26T21:57:52+00:00"
+  },
+  "corpus": {
+    "documents": 1397,
+    "cases": 338,
+    "characters": 17076238,
+    "by_kind": {
+      "attachment": 1059,
+      "petition": 338
+    },
+    "petitions_by_case_type": {
+      "hukuk": 136,
+      "ceza": 85,
+      "is": 37,
+      "genel": 30,
+      "idari": 21,
+      "icra": 11,
+      "noter": 8,
+      "tuketici": 7,
+      "vergi": 2,
+      "unknown": 1
+    },
+    "attachments_by_source_format": {
+      "udf": 553,
+      "pdf": 311,
+      "jpeg": 82,
+      "tif": 52,
+      "docx": 35,
+      "unknown": 17,
+      "png": 6,
+      "xlsx": 2,
+      "doc": 1
+    }
+  },
+  "reliability": {
+    "documents": 1397,
+    "ok": 1396,
+    "failed": 1,
+    "success_rate": 0.999284,
+    "failed_by_status": {
+      "504": 1
+    },
+    "failed_characters": {
+      "mean": 332387.0,
+      "p50": 332387,
+      "p90": 332387,
+      "p95": 332387,
+      "p99": 332387,
+      "max": 332387
+    },
+    "retried_calls": 0
+  },
+  "latency": {
+    "anonymize_seconds": {
+      "mean": 10.05,
+      "p50": 6.72,
+      "p90": 21.91,
+      "p95": 28.22,
+      "p99": 43.26,
+      "max": 102.1
+    },
+    "restore_milliseconds": {
+      "mean": 128.0,
+      "p50": 120.0,
+      "p90": 166.0,
+      "p95": 189.0,
+      "p99": 222.0,
+      "max": 282.0
+    },
+    "characters_per_second": 1194,
+    "anonymize_seconds_by_size": {
+      "< 5k": {
+        "documents": 436,
+        "mean": 2.24,
+        "p50": 2.01,
+        "p90": 3.36,
+        "p95": 5.41,
+        "p99": 7.17,
+        "max": 12.98
+      },
+      "5k – 20k": {
+        "documents": 716,
+        "mean": 9.46,
+        "p50": 9.27,
+        "p90": 13.96,
+        "p95": 16.22,
+        "p99": 21.57,
+        "max": 35.91
+      },
+      "20k – 60k": {
+        "documents": 241,
+        "mean": 25.4,
+        "p50": 22.75,
+        "p90": 35.74,
+        "p95": 41.99,
+        "p99": 80.23,
+        "max": 102.1
+      },
+      "≥ 60k": {
+        "documents": 3,
+        "mean": 49.68,
+        "p50": 52.35,
+        "p90": 53.42,
+        "p95": 53.42,
+        "p99": 53.42,
+        "max": 53.42
+      }
+    }
+  },
+  "cost": {
+    "pricing_rule": "0.01 credits per started 1,000 characters (published at /health)",
+    "total_by_rule": "174.17",
+    "per_document_mean": 0.1248,
+    "per_million_characters": 10.4,
+    "rule_checked_calls": 1387,
+    "rule_matched_calls": 1387
+  },
+  "quality": {
+    "documents_evaluated": 1396,
+    "roundtrip": {
+      "exact": 1396,
+      "exact_ignoring_whitespace": 1396,
+      "rate": 1.0
+    },
+    "structured_identifiers": {
+      "TR_NATIONAL_ID": {
+        "occurrences": 2138,
+        "residual": 0,
+        "unique": 1725,
+        "unique_residual": 0,
+        "documents": 705,
+        "masked_rate": 1.0,
+        "evidence": "11 digits, both check digits valid"
+      },
+      "EMAIL": {
+        "occurrences": 408,
+        "residual": 0,
+        "unique": 114,
+        "unique_residual": 0,
+        "documents": 85,
+        "masked_rate": 1.0,
+        "evidence": "address syntax"
+      },
+      "PLATE": {
+        "occurrences": 445,
+        "residual": 11,
+        "unique": 196,
+        "unique_residual": 10,
+        "documents": 130,
+        "masked_rate": 0.97528,
+        "evidence": "plate format directly followed by the word “plaka”"
+      },
+      "PHONE": {
+        "occurrences": 759,
+        "residual": 0,
+        "unique": 330,
+        "unique_residual": 0,
+        "documents": 212,
+        "masked_rate": 1.0,
+        "evidence": "Turkish mobile number format (5xx)"
+      },
+      "IBAN": {
+        "occurrences": 64,
+        "residual": 0,
+        "unique": 47,
+        "unique_residual": 0,
+        "documents": 30,
+        "masked_rate": 1.0,
+        "evidence": "TR IBAN, ISO 13616 mod-97 valid"
+      }
+    },
+    "documents_with_identifier_leak": 8,
+    "known_entities": {
+      "PERSON": {
+        "values": 13117,
+        "occurrences": 43399,
+        "residual": 30,
+        "values_with_residual": 10,
+        "variant_values": 10656,
+        "variant_occurrences": 39580,
+        "variant_residual": 6,
+        "variant_values_with_residual": 4,
+        "documents": 1309,
+        "consistency": 0.999308,
+        "variant_consistency": 0.999848
+      },
+      "TR_NATIONAL_ID": {
+        "values": 1811,
+        "occurrences": 2205,
+        "residual": 1,
+        "values_with_residual": 1,
+        "variant_values": 1811,
+        "variant_occurrences": 2205,
+        "variant_residual": 1,
+        "variant_values_with_residual": 1,
+        "documents": 723,
+        "consistency": 0.999546,
+        "variant_consistency": 0.999546
+      },
+      "LOCATION": {
+        "values": 2845,
+        "occurrences": 3734,
+        "residual": 212,
+        "values_with_residual": 64,
+        "variant_values": 2745,
+        "variant_occurrences": 3480,
+        "variant_residual": 125,
+        "variant_values_with_residual": 46,
+        "documents": 877,
+        "consistency": 0.943224,
+        "variant_consistency": 0.96408
+      },
+      "ORGANIZATION": {
+        "values": 2337,
+        "occurrences": 7741,
+        "residual": 455,
+        "values_with_residual": 86,
+        "variant_values": 1838,
+        "variant_occurrences": 4978,
+        "variant_residual": 60,
+        "variant_values_with_residual": 14,
+        "documents": 675,
+        "consistency": 0.941222,
+        "variant_consistency": 0.987946
+      },
+      "TR_TAX_ID": {
+        "values": 190,
+        "occurrences": 496,
+        "residual": 21,
+        "values_with_residual": 7,
+        "variant_values": 190,
+        "variant_occurrences": 496,
+        "variant_residual": 21,
+        "variant_values_with_residual": 7,
+        "documents": 126,
+        "consistency": 0.957661,
+        "variant_consistency": 0.957661
+      },
+      "SENSITIVE_TERM": {
+        "values": 41,
+        "occurrences": 141,
+        "residual": 79,
+        "values_with_residual": 10,
+        "variant_values": 14,
+        "variant_occurrences": 18,
+        "variant_residual": 2,
+        "variant_values_with_residual": 2,
+        "documents": 31,
+        "consistency": 0.439716,
+        "variant_consistency": 0.888888
+      },
+      "TR_CASE_NO": {
+        "values": 6641,
+        "occurrences": 10734,
+        "residual": 5,
+        "values_with_residual": 5,
+        "variant_values": 6641,
+        "variant_occurrences": 10734,
+        "variant_residual": 5,
+        "variant_values_with_residual": 5,
+        "documents": 1063,
+        "consistency": 0.999534,
+        "variant_consistency": 0.999534
+      },
+      "TR_LAND_REGISTRY": {
+        "values": 726,
+        "occurrences": 1685,
+        "residual": 10,
+        "values_with_residual": 9,
+        "variant_values": 726,
+        "variant_occurrences": 1978,
+        "variant_residual": 13,
+        "variant_values_with_residual": 12,
+        "documents": 195,
+        "consistency": 0.994065,
+        "variant_consistency": 0.993427
+      },
+      "TR_UETS": {
+        "values": 342,
+        "occurrences": 356,
+        "residual": 0,
+        "values_with_residual": 0,
+        "variant_values": 342,
+        "variant_occurrences": 356,
+        "variant_residual": 0,
+        "variant_values_with_residual": 0,
+        "documents": 178,
+        "consistency": 1.0,
+        "variant_consistency": 1.0
+      },
+      "TR_REGISTRY_NO": {
+        "values": 817,
+        "occurrences": 1595,
+        "residual": 146,
+        "values_with_residual": 32,
+        "variant_values": 817,
+        "variant_occurrences": 1595,
+        "variant_residual": 146,
+        "variant_values_with_residual": 32,
+        "documents": 664,
+        "consistency": 0.908463,
+        "variant_consistency": 0.908463
+      },
+      "BANK_ACCOUNT": {
+        "values": 94,
+        "occurrences": 229,
+        "residual": 65,
+        "values_with_residual": 4,
+        "variant_values": 92,
+        "variant_occurrences": 223,
+        "variant_residual": 64,
+        "variant_values_with_residual": 3,
+        "documents": 62,
+        "consistency": 0.716157,
+        "variant_consistency": 0.713004
+      },
+      "EMAIL_ADDRESS": {
+        "values": 155,
+        "occurrences": 488,
+        "residual": 0,
+        "values_with_residual": 0,
+        "variant_values": 59,
+        "variant_occurrences": 350,
+        "variant_residual": 0,
+        "variant_values_with_residual": 0,
+        "documents": 104,
+        "consistency": 1.0,
+        "variant_consistency": 1.0
+      },
+      "TR_PLATE": {
+        "values": 324,
+        "occurrences": 738,
+        "residual": 13,
+        "values_with_residual": 11,
+        "variant_values": 324,
+        "variant_occurrences": 739,
+        "variant_residual": 13,
+        "variant_values_with_residual": 11,
+        "documents": 173,
+        "consistency": 0.982384,
+        "variant_consistency": 0.982408
+      },
+      "DATE_OF_BIRTH": {
+        "values": 835,
+        "occurrences": 1126,
+        "residual": 33,
+        "values_with_residual": 12,
+        "variant_values": 830,
+        "variant_occurrences": 1118,
+        "variant_residual": 32,
+        "variant_values_with_residual": 11,
+        "documents": 354,
+        "consistency": 0.970692,
+        "variant_consistency": 0.971377
+      },
+      "PHONE_NUMBER": {
+        "values": 703,
+        "occurrences": 1006,
+        "residual": 0,
+        "values_with_residual": 0,
+        "variant_values": 703,
+        "variant_occurrences": 1006,
+        "variant_residual": 0,
+        "variant_values_with_residual": 0,
+        "documents": 337,
+        "consistency": 1.0,
+        "variant_consistency": 1.0
+      },
+      "CREDIT_CARD": {
+        "values": 8,
+        "occurrences": 10,
+        "residual": 0,
+        "values_with_residual": 0,
+        "variant_values": 8,
+        "variant_occurrences": 10,
+        "variant_residual": 0,
+        "variant_values_with_residual": 0,
+        "documents": 8,
+        "consistency": 1.0,
+        "variant_consistency": 1.0
+      },
+      "TR_MERSIS": {
+        "values": 10,
+        "occurrences": 12,
+        "residual": 0,
+        "values_with_residual": 0,
+        "variant_values": 10,
+        "variant_occurrences": 12,
+        "variant_residual": 0,
+        "variant_values_with_residual": 0,
+        "documents": 9,
+        "consistency": 1.0,
+        "variant_consistency": 1.0
+      },
+      "IBAN_CODE": {
+        "values": 54,
+        "occurrences": 70,
+        "residual": 0,
+        "values_with_residual": 0,
+        "variant_values": 54,
+        "variant_occurrences": 70,
+        "variant_residual": 0,
+        "variant_values_with_residual": 0,
+        "documents": 32,
+        "consistency": 1.0,
+        "variant_consistency": 1.0
+      },
+      "TR_DRIVER_LICENSE": {
+        "values": 30,
+        "occurrences": 35,
+        "residual": 4,
+        "values_with_residual": 4,
+        "variant_values": 30,
+        "variant_occurrences": 35,
+        "variant_residual": 4,
+        "variant_values_with_residual": 4,
+        "documents": 29,
+        "consistency": 0.885714,
+        "variant_consistency": 0.885714
+      },
+      "TR_ID_DOCUMENT": {
+        "values": 54,
+        "occurrences": 75,
+        "residual": 8,
+        "values_with_residual": 6,
+        "variant_values": 53,
+        "variant_occurrences": 71,
+        "variant_residual": 5,
+        "variant_values_with_residual": 5,
+        "documents": 38,
+        "consistency": 0.893333,
+        "variant_consistency": 0.929577
+      },
+      "TR_ETTN": {
+        "values": 21,
+        "occurrences": 28,
+        "residual": 0,
+        "values_with_residual": 0,
+        "variant_values": 21,
+        "variant_occurrences": 28,
+        "variant_residual": 0,
+        "variant_values_with_residual": 0,
+        "documents": 17,
+        "consistency": 1.0,
+        "variant_consistency": 1.0
+      },
+      "POSTAL_CODE": {
+        "values": 26,
+        "occurrences": 41,
+        "residual": 14,
+        "values_with_residual": 4,
+        "variant_values": 26,
+        "variant_occurrences": 41,
+        "variant_residual": 14,
+        "variant_values_with_residual": 4,
+        "documents": 24,
+        "consistency": 0.658536,
+        "variant_consistency": 0.658536
+      },
+      "CARD_EXPIRY": {
+        "values": 11,
+        "occurrences": 21,
+        "residual": 8,
+        "values_with_residual": 3,
+        "variant_values": 11,
+        "variant_occurrences": 21,
+        "variant_residual": 8,
+        "variant_values_with_residual": 3,
+        "documents": 9,
+        "consistency": 0.619047,
+        "variant_consistency": 0.619047
+      },
+      "IP_ADDRESS": {
+        "values": 6,
+        "occurrences": 20,
+        "residual": 0,
+        "values_with_residual": 0,
+        "variant_values": 6,
+        "variant_occurrences": 20,
+        "variant_residual": 0,
+        "variant_values_with_residual": 0,
+        "documents": 2,
+        "consistency": 1.0,
+        "variant_consistency": 1.0
+      }
+    },
+    "context_retention": {
+      "high_court": {
+        "original": 4507,
+        "retained": 4501,
+        "documents": 684,
+        "retention": 0.998668
+      },
+      "decision_number": {
+        "original": 7196,
+        "retained": 50,
+        "documents": 923,
+        "retention": 0.006948
+      },
+      "date": {
+        "original": 18278,
+        "retained": 17353,
+        "documents": 1301,
+        "retention": 0.949392
+      },
+      "money_amount": {
+        "original": 5398,
+        "retained": 5360,
+        "documents": 572,
+        "retention": 0.99296
+      },
+      "statute_reference": {
+        "original": 8130,
+        "retained": 7694,
+        "documents": 911,
+        "retention": 0.946371
+      },
+      "article_reference": {
+        "original": 9030,
+        "retained": 9016,
+        "documents": 911,
+        "retention": 0.998449
+      }
+    },
+    "placeholders": {
+      "occurrences": 60666,
+      "unresolvable": 0,
+      "by_type": {
+        "PERSON": 29180,
+        "TR_CASE_NO": 10512,
+        "ORGANIZATION": 4678,
+        "JOB_TITLE": 4274,
+        "LOCATION": 3109,
+        "TR_NATIONAL_ID": 2213,
+        "TR_LAND_REGISTRY": 1334,
+        "DATE_OF_BIRTH": 1068,
+        "PHONE_NUMBER": 961,
+        "TR_REGISTRY_NO": 943,
+        "TR_PLATE": 684,
+        "EMAIL_ADDRESS": 468,
+        "TR_TAX_ID": 397,
+        "TR_UETS": 356,
+        "BANK_ACCOUNT": 161,
+        "IBAN_CODE": 70,
+        "TR_ID_DOCUMENT": 68,
+        "SENSITIVE_TERM": 49,
+        "TR_DRIVER_LICENSE": 30,
+        "TR_ETTN": 28,
+        "POSTAL_CODE": 26,
+        "IP_ADDRESS": 20,
+        "CARD_EXPIRY": 13,
+        "TR_MERSIS": 12,
+        "CREDIT_CARD": 10,
+        "CARD_CVV": 2
+      },
+      "documents_with_type": {
+        "PERSON": 1309,
+        "TR_CASE_NO": 1063,
+        "JOB_TITLE": 1059,
+        "LOCATION": 877,
+        "TR_NATIONAL_ID": 723,
+        "ORGANIZATION": 690,
+        "TR_REGISTRY_NO": 668,
+        "DATE_OF_BIRTH": 356,
+        "PHONE_NUMBER": 338,
+        "TR_LAND_REGISTRY": 195,
+        "TR_UETS": 178,
+        "TR_PLATE": 173,
+        "TR_TAX_ID": 128,
+        "EMAIL_ADDRESS": 104,
+        "BANK_ACCOUNT": 63,
+        "TR_ID_DOCUMENT": 39,
+        "SENSITIVE_TERM": 32,
+        "IBAN_CODE": 32,
+        "TR_DRIVER_LICENSE": 29,
+        "POSTAL_CODE": 24,
+        "TR_ETTN": 17,
+        "TR_MERSIS": 9,
+        "CARD_EXPIRY": 9,
+        "CREDIT_CARD": 8,
+        "CARD_CVV": 2,
+        "IP_ADDRESS": 2
+      },
+      "per_document_p50": 27
+    },
+    "masked_share": {
+      "mean": 0.0688,
+      "p50": 0.0487
+    },
+    "llm_audit": {
+      "model": "gpt-6-luna",
+      "prompt_version": "2",
+      "documents": 1396,
+      "documents_with_findings": 623,
+      "requests": 2901,
+      "reported": 2158,
+      "rejected": 207,
+      "usage": {
+        "input_tokens": 7453838,
+        "cached_input_tokens": 190180,
+        "output_tokens": 568843,
+        "reasoning_tokens": 489385
+      },
+      "calibration": {
+        "model": "gpt-6-luna",
+        "prompt_version": "2",
+        "documents": 40,
+        "planted": 225,
+        "found": 206,
+        "by_type": {
+          "PERSON": {
+            "planted": 94,
+            "found": 90
+          },
+          "NATIONAL_ID": {
+            "planted": 31,
+            "found": 31
+          },
+          "PHONE": {
+            "planted": 5,
+            "found": 5
+          },
+          "EMAIL": {
+            "planted": 3,
+            "found": 3
+          },
+          "BANK": {
+            "planted": 1,
+            "found": 1
+          },
+          "PLATE": {
+            "planted": 3,
+            "found": 3
+          },
+          "ADDRESS": {
+            "planted": 41,
+            "found": 37
+          },
+          "DATE_OF_BIRTH": {
+            "planted": 9,
+            "found": 6
+          },
+          "ID_NUMBER": {
+            "planted": 18,
+            "found": 16
+          },
+          "ORGANIZATION": {
+            "planted": 20,
+            "found": 14
+          }
+        },
+        "usage": {
+          "input_tokens": 183768,
+          "cached_input_tokens": 0,
+          "output_tokens": 23689,
+          "reasoning_tokens": 17860
+        }
+      },
+      "by_type": {
+        "PERSON": {
+          "masked": 29180,
+          "left": 273,
+          "left_values": 168,
+          "never_masked": 207,
+          "never_masked_values": 120,
+          "documents": 106,
+          "service_types": [
+            "PERSON"
+          ],
+          "rate": 0.99073
+        },
+        "CITED_AUTHOR": {
+          "masked": 0,
+          "left": 22,
+          "left_values": 22,
+          "never_masked": 20,
+          "never_masked_values": 20,
+          "documents": 10,
+          "service_types": [],
+          "rate": null
+        },
+        "NATIONAL_ID": {
+          "masked": 2281,
+          "left": 19,
+          "left_values": 17,
+          "never_masked": 19,
+          "never_masked_values": 17,
+          "documents": 11,
+          "service_types": [
+            "TR_NATIONAL_ID",
+            "TR_ID_DOCUMENT"
+          ],
+          "rate": 0.991739
+        },
+        "PHONE": {
+          "masked": 961,
+          "left": 6,
+          "left_values": 3,
+          "never_masked": 6,
+          "never_masked_values": 3,
+          "documents": 3,
+          "service_types": [
+            "PHONE_NUMBER"
+          ],
+          "rate": 0.993795
+        },
+        "EMAIL": {
+          "masked": 468,
+          "left": 0,
+          "left_values": 0,
+          "never_masked": 0,
+          "never_masked_values": 0,
+          "documents": 0,
+          "service_types": [
+            "EMAIL_ADDRESS"
+          ],
+          "rate": 1.0
+        },
+        "BANK": {
+          "masked": 243,
+          "left": 11,
+          "left_values": 6,
+          "never_masked": 11,
+          "never_masked_values": 6,
+          "documents": 4,
+          "service_types": [
+            "IBAN_CODE",
+            "BANK_ACCOUNT",
+            "CREDIT_CARD",
+            "CARD_CVV"
+          ],
+          "rate": 0.956692
+        },
+        "PLATE": {
+          "masked": 684,
+          "left": 21,
+          "left_values": 18,
+          "never_masked": 11,
+          "never_masked_values": 9,
+          "documents": 14,
+          "service_types": [
+            "TR_PLATE"
+          ],
+          "rate": 0.970212
+        },
+        "ADDRESS": {
+          "masked": 3135,
+          "left": 394,
+          "left_values": 194,
+          "never_masked": 232,
+          "never_masked_values": 135,
+          "documents": 133,
+          "service_types": [
+            "LOCATION",
+            "POSTAL_CODE"
+          ],
+          "rate": 0.888353
+        },
+        "DATE_OF_BIRTH": {
+          "masked": 1068,
+          "left": 43,
+          "left_values": 42,
+          "never_masked": 39,
+          "never_masked_values": 38,
+          "documents": 24,
+          "service_types": [
+            "DATE_OF_BIRTH"
+          ],
+          "rate": 0.961296
+        },
+        "ID_NUMBER": {
+          "masked": 1134,
+          "left": 2120,
+          "left_values": 1067,
+          "never_masked": 1853,
+          "never_masked_values": 965,
+          "documents": 453,
+          "service_types": [
+            "TR_TAX_ID",
+            "TR_REGISTRY_NO",
+            "TR_MERSIS",
+            "TR_DRIVER_LICENSE",
+            "TR_UETS",
+            "TR_ETTN"
+          ],
+          "rate": 0.348494
+        },
+        "ORGANIZATION": {
+          "masked": 4678,
+          "left": 370,
+          "left_values": 57,
+          "never_masked": 331,
+          "never_masked_values": 44,
+          "documents": 49,
+          "service_types": [
+            "ORGANIZATION"
+          ],
+          "rate": 0.926703
+        }
+      }
+    }
+  },
+  "by_kind": {
+    "attachment": {
+      "documents": 1058,
+      "characters": 11724024,
+      "roundtrip_exact": 1058,
+      "placeholders_per_1k_chars": 4.01,
+      "anonymize_p50_s": 6.01
+    },
+    "petition": {
+      "documents": 338,
+      "characters": 5019827,
+      "roundtrip_exact": 338,
+      "placeholders_per_1k_chars": 2.73,
+      "anonymize_p50_s": 9.98
+    }
+  }
+}

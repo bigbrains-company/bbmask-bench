@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bbmask-bench"
+version = "0.1.0"
+description = "Reproducible benchmark for bb-mask (Data Mask): PII masking for LLM pipelines, measured on Turkish legal documents."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "BigBrains" }]
+keywords = ["anonymization", "pii", "kvkk", "gdpr", "llm", "benchmark", "data-mask", "bb-mask"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: Software Development :: Testing",
+    "Typing :: Typed",
+]
+dependencies = [
+    "bb-mask>=0.3.1",
+    "httpx>=0.27",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+bbmask-bench = "bbmask_bench.cli:main"
+
+[project.urls]
+Homepage = "https://bbmask.co"
+Documentation = "https://app.bbmask.co/#/sdk"
+"bb-mask on PyPI" = "https://pypi.org/project/bb-mask/"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bbmask_bench"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "C4", "RUF"]
+ignore = [
+    "RUF001", # Turkish letters in string literals are intentional
+    "RUF002",
+    "RUF003",
+]

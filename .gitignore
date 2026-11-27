@@ -1,0 +1,30 @@
+# --- Secrets -------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# --- Data that must never be committed -----------------------------------
+# Source corpus (documents + request metadata).
+olusturma/
+corpus/
+# Raw run artifacts: masked text, placeholder mappings (plain PII values),
+# restored text. Only aggregated, PII-free output under results/ is tracked.
+runs/
+
+# --- Python --------------------------------------------------------------
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- OS / editors --------------------------------------------------------
+.DS_Store
+.idea/
+.vscode/
